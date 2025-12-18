@@ -23,7 +23,7 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages (use PAT)
         uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: ./dist
@@ -31,6 +31,5 @@ jobs:
           allow_empty_commit: true
           keep_files: false
           commit_message: "ci: deploy to gh-pages via workflow"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Uses a Personal Access Token stored in repository secrets
+          personal_token: ${{ secrets.GH_PAGES_TOKEN }}
