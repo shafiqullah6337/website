@@ -27,5 +27,10 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: ./dist
+          publish_branch: gh-pages
+          allow_empty_commit: true
+          keep_files: false
+          commit_message: "ci: deploy to gh-pages via workflow"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
